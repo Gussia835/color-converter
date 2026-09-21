@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
+using Microsoft.Win32;
 
 namespace color_converter
 {
@@ -20,6 +22,7 @@ namespace color_converter
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();

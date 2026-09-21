@@ -3,10 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:color_converter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Задача 2: Каналы RGB и гистограммы" Height="650" Width="900"
+        WindowStartupLocation="CenterScreen">
     <Grid>
+        <Button x:Name="btnLoad" Content="Загрузить" HorizontalAlignment="Left" Margin="25,18,0,0" VerticalAlignment="Top" Width="95" Height="28" Click="BtnLoad_Click"/>
+        <Button x:Name="btnProcess" Content="Построить" HorizontalAlignment="Left" Margin="135,18,0,0" VerticalAlignment="Top" Width="95" Height="28" IsEnabled="False" Click="BtnProcess_Click"/>
 
+        <TextBlock HorizontalAlignment="Left" Margin="25,55,0,0" TextWrapping="Wrap" Text="Оригинал" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Image x:Name="imgOriginal" HorizontalAlignment="Left" Height="165" Margin="25,75,0,0" VerticalAlignment="Top" Width="180" Stretch="Uniform" Background="LightGray"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="228,52,0,0" TextWrapping="Wrap" Text="Канал R" VerticalAlignment="Top" FontWeight="Bold" Foreground="DarkRed"/>
+        <Image x:Name="imgRed" HorizontalAlignment="Left" Height="165" Margin="228,72,0,0" VerticalAlignment="Top" Width="180" Stretch="Uniform" Background="LightGray"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="432,58,0,0" TextWrapping="Wrap" Text="Канал G" VerticalAlignment="Top" FontWeight="Bold" Foreground="DarkGreen"/>
+        <Image x:Name="imgGreen" HorizontalAlignment="Left" Height="165" Margin="432,78,0,0" VerticalAlignment="Top" Width="180" Stretch="Uniform" Background="LightGray"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="635,54,0,0" TextWrapping="Wrap" Text="Канал B" VerticalAlignment="Top" FontWeight="Bold" Foreground="DarkBlue"/>
+        <Image x:Name="imgBlue" HorizontalAlignment="Left" Height="165" Margin="635,74,0,0" VerticalAlignment="Top" Width="180" Stretch="Uniform" Background="LightGray"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="25,265,0,0" TextWrapping="Wrap" Text="Гистограмма R" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Canvas x:Name="canvasHistR" HorizontalAlignment="Left" Height="140" Margin="25,285,0,0" VerticalAlignment="Top" Width="180" Background="White"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="230,262,0,0" TextWrapping="Wrap" Text="Гистограмма G" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Canvas x:Name="canvasHistG" HorizontalAlignment="Left" Height="140" Margin="230,282,0,0" VerticalAlignment="Top" Width="180" Background="White"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="435,268,0,0" TextWrapping="Wrap" Text="Гистограмма B" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Canvas x:Name="canvasHistB" HorizontalAlignment="Left" Height="140" Margin="435,288,0,0" VerticalAlignment="Top" Width="180" Background="White"/>
     </Grid>
 </Window>
