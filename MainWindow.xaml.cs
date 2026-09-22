@@ -11,10 +11,9 @@ namespace color_converter
 
         private void ButtonTask1_Click(object sender, RoutedEventArgs e)
         {
-            // Task1Window task1 = new Task1Window();
-            // task1.Show();
-            // this.Close();
-            MessageBox.Show("Задание 1 в процессе");
+            GrayVariantsWindow task1 = new GrayVariantsWindow();
+            task1.Show();
+            this.Close();
         }
 
         private void ButtonTask2_Click(object sender, RoutedEventArgs e)
