@@ -1,12 +1,11 @@
 ﻿<Window x:Class="color_converter.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:color_converter"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Выбор задания" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
-    </Grid>
+        <Button Content="Задание 2" Width="200" Height="40" Margin="10" 
+                Click="ButtonTask2_Click"/>
+    </StackPanel>
 </Window>
