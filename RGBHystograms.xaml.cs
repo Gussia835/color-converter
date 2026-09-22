@@ -25,11 +25,16 @@ namespace color_converter
     public partial class RGBHystograms : Window
     {
 
-        Bitmap originalBitmap;
+        private BitmapSource originalBitmap;
+        private byte[] originalPixels;
 
-        int[] histR;
-        int[] histB;
-        int[] histG;
+        private int width;
+        private int height;
+        private int stride;
+
+        private int[] histR;
+        private int[] histB;
+        private int[] histG;
 
         public RGBHystograms()
         {
@@ -46,9 +51,22 @@ namespace color_converter
             {
                 try
                 {
-                    originalBitmap = new Bitmap(openFileDialog.FileName);
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.UriSource = new Uri(openFileDialog.FileName);
+                    bitmapImage.EndInit();
 
-                    OriginalImage.Source = convertToBitmapSource(originalBitmap);
+                    originalBitmap = new FormatConvertedBitmap(bitmapImage, PixelFormats.Bgra32, null, 0);
+
+                    width = originalBitmap.PixelWidth;
+                    height = originalBitmap.PixelHeight;
+                    stride = width * 4;
+
+                    originalPixels = new byte[height * stride];
+                    originalBitmap.CopyPixels(originalPixels, stride, 0);
+
+                    OriginalImage.Source = originalBitmap; 
+
 
                     buttonProcess.IsEnabled = true;
 
@@ -67,40 +85,48 @@ namespace color_converter
                 return;
             }
 
-            int width = originalBitmap.Width;
-            int height = originalBitmap.Height;
 
-            Bitmap bitmapR = new Bitmap(width, height);
-            Bitmap bitmapG = new Bitmap(width, height);
-            Bitmap bitmapB = new Bitmap(width, height);
+            byte[] pixelsR = new byte[originalPixels.Length];
+            byte[] pixelsG = new byte[originalPixels.Length];
+            byte[] pixelsB = new byte[originalPixels.Length];
 
             histR = new int[256];
             histB = new int[256];
             histG = new int[256];
 
-            for (int h = 0; h < height; ++h) {
-                for (int w = 0; w < width; ++w) {
+            for (int i = 0; i < originalPixels.Length; i += 4) { 
 
-                    System.Drawing.Color pixel = originalBitmap.GetPixel(w, h);
+                byte b = originalPixels[i];
+                byte g = originalPixels[i + 1];
+                byte r = originalPixels[i + 2];
+                byte a = originalPixels[i + 3];
 
-                    byte r = pixel.R;
-                    byte g = pixel.G;
-                    byte b = pixel.B;
 
-                    bitmapR.SetPixel(w, h, System.Drawing.Color.FromArgb(r, 0, 0));
-                    bitmapG.SetPixel(w, h, System.Drawing.Color.FromArgb(0, g, 0));
-                    bitmapB.SetPixel(w, h, System.Drawing.Color.FromArgb(0, 0, b));
 
-                    ++histR[r];
-                    ++histG[g];
-                    ++histB[b];
+                pixelsR[i] = 0;
+                pixelsR[i + 1] = 0;
+                pixelsR[i + 2] = r;
+                pixelsR[i + 3] = 255;
 
-                }
+                pixelsG[i] = 0;
+                pixelsG[i + 1] = g;
+                pixelsG[i + 2] = 0;
+                pixelsG[i + 3] = 255;
+
+                pixelsB[i] = b;
+                pixelsB[i + 1] = 0;
+                pixelsB[i + 2] = 0;
+                pixelsB[i + 3] = 255;
+
+                
+                histR[r]++;
+                histG[g]++;
+                histB[b]++;
             }
 
-            imageRed.Source = convertToBitmapSource(bitmapR);
-            imageGreen.Source = convertToBitmapSource(bitmapG);
-            imageBlue.Source = convertToBitmapSource(bitmapB);
+            imageRed.Source = createBitmapSource(pixelsR);
+            imageGreen.Source = createBitmapSource(pixelsG);
+            imageBlue.Source = createBitmapSource(pixelsB);
 
 
             drawHystogram(canvasHistR, histR, System.Windows.Media.Brushes.Red);
@@ -154,30 +180,18 @@ namespace color_converter
             
         }
 
-        private BitmapSource convertToBitmapSource(Bitmap bitmap) {
-
-            IntPtr ptrBitmap = bitmap.GetHbitmap();
-
-            try {
-                BitmapSource res = Imaging.CreateBitmapSourceFromHBitmap(ptrBitmap,
-                                    IntPtr.Zero,
-                                    Int32Rect.Empty,
-                                    BitmapSizeOptions.FromEmptyOptions());
-
-
-                res.Freeze();
-
-                return res;
-            
-            } finally {
-                DeleteObject(ptrBitmap);
-            }
-
-            
+        private BitmapSource createBitmapSource(byte[] pixels)
+        {
+            return BitmapSource.Create(
+                width,           
+                height,          
+                96, 96,          
+                PixelFormats.Bgra32, 
+                null,            
+                pixels,       
+                stride         
+            );
         }
-
-        [DllImport("gdi32.dll")]
-        private static extern bool DeleteObject(IntPtr hObject);
 
 
 
