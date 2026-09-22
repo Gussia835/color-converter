@@ -52,11 +52,10 @@ namespace color_converter
 
                     buttonProcess.IsEnabled = true;
 
-                }
-                catch (Exception e)
+                } catch (Exception ex)
                 {
 
-                    MessageBox.Show("Ошибка загрузки изображения " + e.Message);
+                    MessageBox.Show("Ошибка загрузки изображения " + ex.Message);
                 }
             }
         }
@@ -138,14 +137,15 @@ namespace color_converter
 
                 double barHeight = ((double)hystogram[i] / maxVal) * h;
 
-                Line line = new Line {
+                Line line = new Line
+                {
                     X1 = i * barWidth,
                     Y1 = h,
                     X2 = i * barWidth,
                     Y2 = h - barHeight,
                     Stroke = color,
                     StrokeThickness = barWidth
-                }
+                };
 
                 canvas.Children.Add(line);
 

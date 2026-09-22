@@ -22,13 +22,18 @@
         <TextBlock HorizontalAlignment="Left" Margin="635,54,0,0" TextWrapping="Wrap" Text="Канал B" VerticalAlignment="Top" FontWeight="Bold" Foreground="DarkBlue"/>
         <Image x:Name="imageBlue" HorizontalAlignment="Left" Height="165" Margin="635,74,0,0" VerticalAlignment="Top" Width="180" Stretch="Uniform"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="25,265,0,0" TextWrapping="Wrap" Text="Гистограмма R" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Canvas x:Name="canvasHistR" HorizontalAlignment="Left" Height="140" Margin="25,285,0,0" VerticalAlignment="Top" Width="180" Background="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="228,265,0,0" TextWrapping="Wrap" Text="Гистограмма R" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Canvas x:Name="canvasHistR" HorizontalAlignment="Left" Height="140" Margin="228,285,0,0" VerticalAlignment="Top" Width="180" Background="White"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="230,262,0,0" TextWrapping="Wrap" Text="Гистограмма G" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Canvas x:Name="canvasHistG" HorizontalAlignment="Left" Height="140" Margin="230,282,0,0" VerticalAlignment="Top" Width="180" Background="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="432,262,0,0" TextWrapping="Wrap" Text="Гистограмма G" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Canvas x:Name="canvasHistG" HorizontalAlignment="Left" Height="140" Margin="432,282,0,0" VerticalAlignment="Top" Width="180" Background="White"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="435,268,0,0" TextWrapping="Wrap" Text="Гистограмма B" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Canvas x:Name="canvasHistB" HorizontalAlignment="Left" Height="140" Margin="435,288,0,0" VerticalAlignment="Top" Width="180" Background="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="634,268,0,0" TextWrapping="Wrap" Text="Гистограмма B" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Canvas x:Name="canvasHistB" HorizontalAlignment="Left" Height="140" Margin="634,288,0,0" VerticalAlignment="Top" Width="180" Background="White"/>
+
+        <Button x:Name="buttonBack" Content="Назад в меню" HorizontalAlignment="Left" Margin="2,590,0,0" VerticalAlignment="Top" Width="120" Height="28" 
+        Click="ButtonBack_Click"/>
     </Grid>
+    
+    
 </Window>
