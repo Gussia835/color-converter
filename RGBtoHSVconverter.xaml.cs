@@ -77,7 +77,7 @@ namespace color_converter
             cts = new CancellationTokenSource();
             var token = cts.Token;
 
-            try { await Task.Delay(15, token); }
+            try { await Task.Delay(1, token); }
             catch (TaskCanceledException) { return; }
 
             double shiftH = h.Value;
