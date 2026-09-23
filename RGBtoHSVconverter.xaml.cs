@@ -167,5 +167,14 @@ namespace color_converter
                 MessageBox.Show($"Сохранено в:\n{outPath}");
             }
         }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+
+            MainWindow mainWindow = new MainWindow();
+
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }

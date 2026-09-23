@@ -27,7 +27,12 @@
             <Slider x:Name="v" Minimum="-100" Maximum="100" Value="0" ValueChanged="Update"/>
 
             <Button Content="Сохранить результат (out.jpg)" Click="Save" Margin="0,20,0,0" Padding="10,8" Cursor="Hand"/>
+
+            <Button x:Name="buttonBack" Content="Назад в меню" HorizontalAlignment="Left" Margin="1,40,0,0" VerticalAlignment="Top" Width="120" Height="28" 
+            Click="ButtonBack_Click"/>
         </StackPanel>
+
+       
 
     </Grid>
 </Window>
