@@ -1,0 +1,33 @@
+﻿<Window x:Class="color_converter.RGBtoHSVconverter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:color_converter"
+        mc:Ignorable="d" 
+        Title="RGB to HSV Converter" Height="500" Width="450">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Image x:Name="img" Grid.Row="0" Stretch="Uniform" Margin="0,0,0,15"/>
+
+        <StackPanel Grid.Row="1">
+            <Button Content="Открыть изображение..." Click="OpenImage_Click" Margin="0,5,0,15" Padding="10,8" FontWeight="Bold" Cursor="Hand"/>
+
+            <TextBlock Text="Оттенок (Hue) — Сдвиг цвета" Margin="0,5,0,2" FontWeight="Bold"/>
+            <Slider x:Name="h" Minimum="-180" Maximum="180" Value="0" ValueChanged="Update"/>
+
+            <TextBlock Text="Насыщенность (Saturation)" Margin="0,10,0,2" FontWeight="Bold"/>
+            <Slider x:Name="s" Minimum="-100" Maximum="100" Value="0" ValueChanged="Update"/>
+
+            <TextBlock Text="Яркость (Value)" Margin="0,10,0,2" FontWeight="Bold"/>
+            <Slider x:Name="v" Minimum="-100" Maximum="100" Value="0" ValueChanged="Update"/>
+
+            <Button Content="Сохранить результат (out.jpg)" Click="Save" Margin="0,20,0,0" Padding="10,8" Cursor="Hand"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

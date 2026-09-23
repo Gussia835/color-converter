@@ -26,10 +26,10 @@ namespace color_converter
 
         private void ButtonTask3_Click(object sender, RoutedEventArgs e)
         {
-            // Task3Window task3 = new Task3Window();
-            // task3.Show();
-            // this.Close();
-            MessageBox.Show("Задание 3 в процессе");
+            RGBtoHSVconverter task3 = new RGBtoHSVconverter();
+            task3.Show();
+            this.Close();
         }
+
     }
 }
